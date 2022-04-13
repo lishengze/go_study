@@ -26,8 +26,21 @@ func test(a int, b int, before_func func(int, int) int) (after_func func(int, in
 	return minus
 }
 
+func test_bibao() {
+	a := [...]int{1, 2, 3, 4, 5}
+
+	for _, value := range a {
+		fmt.Printf("value_out: %d \n", value)
+		go func() {
+			fmt.Printf("value_in: %d \n", value)
+		}()
+	}
+}
+
 func main() {
-	a := 10
-	b := 20
-	fmt.Printf("test(a, b, add)(a, b): %d \n", test(a, b, add)(a, b))
+	// a := 10
+	// b := 20
+	// fmt.Printf("test(a, b, add)(a, b): %d \n", test(a, b, add)(a, b))
+
+	test_bibao()
 }
