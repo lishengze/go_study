@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"net/http"
 	"time"
 )
@@ -150,6 +151,101 @@ func test_channel2() {
 	time.Sleep(3 * time.Second)
 }
 
+func test_stop_channel() {
+	dataCha := make(chan int, 100)
+	stopCha := make(chan struct{})
+
+	test_count := 100
+	max := 50
+
+	for i := 0; i < test_count; i++ {
+		go func(index int) {
+			fmt.Println(index)
+			randVal := rand.Intn(max)
+			select {
+			case <-stopCha:
+				fmt.Println("Stop Sending Data")
+				return
+			case dataCha <- randVal:
+				fmt.Printf("Send %d To dataCha \n", randVal)
+			}
+		}(i)
+	}
+
+	go func() {
+		for value := range dataCha {
+			if value == max-1 {
+				fmt.Println("Close StopCha")
+				close(stopCha)
+			}
+		}
+	}()
+
+	select {
+	case <-time.After(time.Hour):
+	}
+}
+
+func test_close_channel3() {
+	senderNumbs := 10
+	receiverNumbs := 10
+	max := 100
+
+	dataCha := make(chan int, 100)
+	sigCha := make(chan struct{})
+	modCha := make(chan string)
+
+	fmt.Println("test_close_channel3")
+
+	// Receive goroutine
+	for i := 0; i < receiverNumbs; i++ {
+		go func(index int) {
+			fmt.Printf("[R] Recv Goroutine: %d \n", index)
+			select {
+
+			case value := <-dataCha:
+				fmt.Printf("[R] Recv Index: %d, Data: %d, \n", index, value)
+				if value > max/2 {
+					fmt.Printf("[R] Recv Send Close Signal")
+					modCha <- "close"
+				}
+			}
+		}(i)
+	}
+
+	// moderator goroutine
+	go func() {
+		for {
+			select {
+			case recv_value := <-modCha:
+				if recv_value == "close" {
+					fmt.Printf("\n--------- Close SigCha -------- \n")
+					close(sigCha)
+				}
+				return
+			}
+
+		}
+	}()
+
+	// Sender goroutine
+	for i := 0; i < senderNumbs; i++ {
+		go func(index int) {
+			fmt.Printf("[S] Send Goroutine: %d \n", index)
+			select {
+			case <-sigCha:
+				fmt.Printf("[S] SigCha Closed, Index: %d, \n", index)
+				return
+			default:
+				value := rand.Intn(max)
+				fmt.Printf("[S] Send Index: %d, Data: %d \n", index, value)
+				dataCha <- value
+			}
+		}(i)
+	}
+
+}
+
 func main() {
 	// test1()
 
@@ -161,5 +257,13 @@ func main() {
 
 	// test_write()
 
-	test_channel2()
+	// test_channel2()
+
+	// test_stop_channel()
+
+	test_close_channel3()
+
+	select {
+	case <-time.After(time.Hour):
+	}
 }
