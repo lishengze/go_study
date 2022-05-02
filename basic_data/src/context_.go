@@ -47,8 +47,56 @@ func test_simple() {
 	}
 }
 
+type MyContext struct {
+	context.Context
+}
+
+func work(ctx context.Context) {
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Printf("%v, Main Send Done \n", time.Now())
+			return
+		default:
+			time.Sleep(time.Second * 3)
+		}
+	}
+}
+
+func test_mycontext() {
+	base_ctx := context.Background()
+
+	base_child_ctx, base_child_cancel_func := context.WithCancel(base_ctx)
+
+	// base_child_ctx
+
+	user_ctx := MyContext{base_ctx}
+
+	user_child_ctx, user_child_cancel_func := context.WithCancel(user_ctx)
+
+	go work(base_child_ctx)
+
+	go work(user_child_ctx)
+
+	base_child_cancel_func()
+
+	user_child_cancel_func()
+
+	fmt.Printf("base_ctx: %v \n", base_ctx)
+	fmt.Printf("base_child_ctx: %v \n", base_child_ctx)
+	fmt.Printf("user_ctx: %v \n", user_ctx)
+	fmt.Printf("user_child_ctx: %v \n", user_child_ctx)
+
+	time.Sleep(time.Hour)
+
+	// user_child_ctx
+
+}
+
 func main() {
 	fmt.Println("------ Test Context ------")
 
-	test_simple()
+	// test_simple()
+
+	test_mycontext()
 }
