@@ -246,6 +246,41 @@ func test_close_channel3() {
 
 }
 
+func write_c(c chan<- int) {
+	var i int = 0
+	for {
+		c <- i
+
+		fmt.Printf("%v, Write %d.\n", time.Now(), i)
+		// fmt.Println(time.Now())
+
+		time.Sleep(3 * time.Second)
+
+		i++
+	}
+}
+
+func read_c(c <-chan int) {
+	for {
+		i := <-c
+		fmt.Printf("%v, Read %d.\n", time.Now(), i)
+		// fmt.Println(time.Now())
+		time.Sleep(3 * time.Second)
+
+	}
+}
+
+func test_read_write() {
+	c_value := make(chan int)
+
+	go write_c(c_value)
+
+	go read_c(c_value)
+
+	time.Sleep(1000 * time.Second)
+
+}
+
 func main() {
 	// test1()
 
@@ -261,9 +296,11 @@ func main() {
 
 	// test_stop_channel()
 
-	test_close_channel3()
+	// test_close_channel3()
 
-	select {
-	case <-time.After(time.Hour):
-	}
+	// select {
+	// case <-time.After(time.Hour):
+	// }
+
+	test_read_write()
 }
