@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import (
 	"fmt"
@@ -84,12 +84,12 @@ func test_big() {
 	fmt.Println(x2, y2, z2)
 }
 
-func main() {
-	// parse_float()
+// func main() {
+// 	// parse_float()
 
-	// trans_bit_to_float32()
+// 	// trans_bit_to_float32()
 
-	// is_int()
+// 	// is_int()
 
-	test_big()
-}
+// 	test_big()
+// }

@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import (
 	"fmt"
@@ -156,12 +156,12 @@ func test_value() {
 	}
 }
 
-func main() {
-	// test_reflect1()
+// func main() {
+// 	// test_reflect1()
 
-	// base_test()
+// 	// base_test()
 
-	// test_element()
+// 	// test_element()
 
-	test_value()
-}
+// 	test_value()
+// }

@@ -1,14 +1,14 @@
-package main
+package BaseData
 
 import "fmt"
 
-func test1() {
-	defer fmt.Println("test1 This defer")
+// func test1() {
+// 	defer fmt.Println("test1 This defer")
 
-	panic("Panic By user")
+// 	panic("Panic By user")
 
-	fmt.Println("test1 over!")
-}
+// 	fmt.Println("test1 over!")
+// }
 
 func catch_exp() {
 	errMsg := recover()
@@ -59,16 +59,16 @@ func test5() int {
 
 }
 
-func main() {
-	// test1()
+// func main() {
+// 	// test1()
 
-	// test2()
+// 	// test2()
 
-	// test3()
+// 	// test3()
 
-	// fmt.Printf("test4 over g %d\n", test4())
+// 	// fmt.Printf("test4 over g %d\n", test4())
 
-	fmt.Printf("test5 over r %d\n", test5())
+// 	fmt.Printf("test5 over r %d\n", test5())
 
-	fmt.Println("main over!")
-}
+// 	fmt.Println("main over!")
+// }

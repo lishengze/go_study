@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import "fmt"
 
@@ -20,8 +20,8 @@ func test_array() {
 	// fmt.Println(a[4])
 }
 
-func main() {
-	test_array()
+// func main() {
+// 	test_array()
 
-	fmt.Println("Test Array")
-}
+// 	fmt.Println("Test Array")
+// }

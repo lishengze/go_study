@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import (
 	"fmt"
@@ -25,7 +25,7 @@ func test1() {
 	time.Sleep(1 * time.Second)
 }
 
-func test2() {
+func TestChannel2() {
 	test_links := []string{
 		"www.baidu.com",
 		"www.jd.com",
@@ -112,32 +112,32 @@ func test_write() {
 	time.Sleep(3 * time.Second)
 }
 
-type User struct {
+type ChannelUser struct {
 	Name string
 	Age  int
 }
 
-var user = User{"Tom", 14}
+var user = ChannelUser{"Tom", 14}
 var pg_user = &user
 
-func modify_user(user *User) {
+func modify_user(user *ChannelUser) {
 	user.Name = "Json"
-	fmt.Println("Modified User: ", user)
+	fmt.Println("Modified ChannelUser: ", user)
 }
 
-func print_user(channel_user chan *User) {
+func print_user(channel_user chan *ChannelUser) {
 	fmt.Println("Start Recv Data From Channel ", time.Now())
 
 	channel_value := <-channel_user
 
-	fmt.Println("Recv Data User: ", channel_value, time.Now())
+	fmt.Println("Recv Data ChannelUser: ", channel_value, time.Now())
 }
 
 // Test Channel Value Copy
 func test_channel2() {
-	user_channel := make(chan *User, 5)
+	user_channel := make(chan *ChannelUser, 5)
 
-	fmt.Println("Global User: ", pg_user)
+	fmt.Println("Global ChannelUser: ", pg_user)
 
 	go print_user(user_channel)
 
@@ -281,26 +281,26 @@ func test_read_write() {
 
 }
 
-func main() {
-	// test1()
+// func main() {
+// 	// test1()
 
-	// test2()
+// 	// test2()
 
-	// test_select()
+// 	// test_select()
 
-	// test_select2()
+// 	// test_select2()
 
-	// test_write()
+// 	// test_write()
 
-	// test_channel2()
+// 	// test_channel2()
 
-	// test_stop_channel()
+// 	// test_stop_channel()
 
-	// test_close_channel3()
+// 	// test_close_channel3()
 
-	// select {
-	// case <-time.After(time.Hour):
-	// }
+// 	// select {
+// 	// case <-time.After(time.Hour):
+// 	// }
 
-	test_read_write()
-}
+// 	test_read_write()
+// }

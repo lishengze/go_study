@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import (
 	"fmt"
@@ -17,8 +17,8 @@ func TimeTask(interval int64) {
 	}
 }
 
-func main() {
-	go TimeTask(5)
+// func main() {
+// 	go TimeTask(5)
 
-	time.Sleep(time.Second * 1000)
-}
+// 	time.Sleep(time.Second * 1000)
+// }

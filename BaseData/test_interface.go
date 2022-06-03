@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import (
 	"fmt"
@@ -118,13 +118,13 @@ func test_itab() {
 	fmt.Println(*(*int)(unsafe.Pointer(iz.data)))
 }
 
-func main() {
+// func main() {
 
-	fmt.Println("--------- test interface ---------")
+// 	fmt.Println("--------- test interface ---------")
 
-	// test_code()
+// 	// test_code()
 
-	test_itab()
+// 	test_itab()
 
-	// test_cat_pointer()
-}
+// 	// test_cat_pointer()
+// }

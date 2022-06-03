@@ -86,16 +86,16 @@ func PrintDetails(gun iGun) {
 	fmt.Printf("Name: %s, Power: %d\n", gun.GetName(), gun.GetPower())
 }
 
-func main() {
-	ak47, err := get_gun("AK47")
+// func main() {
+// 	ak47, err := get_gun("AK47")
 
-	if err == nil {
-		PrintDetails(ak47)
-	}
+// 	if err == nil {
+// 		PrintDetails(ak47)
+// 	}
 
-	musket, err := get_gun("Musket")
+// 	musket, err := get_gun("Musket")
 
-	if err == nil {
-		PrintDetails(musket)
-	}
-}
+// 	if err == nil {
+// 		PrintDetails(musket)
+// 	}
+// }

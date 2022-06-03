@@ -36,16 +36,16 @@ type DoctorA struct {
 	baseDoctor
 }
 
-// func (doctor *DoctorA) execute(cur_patient *patient) {
-// 	cur_patient.Stage = doctor.name
-// 	fmt.Printf("Patient.Name: %s, Patient.Stage: %s \n", cur_patient.Name, cur_patient.Stage)
+func (doctor *DoctorA) execute(cur_patient *patient) {
+	cur_patient.Stage = doctor.name
+	fmt.Printf("DoctorA Patient.Name: %s, Patient.Stage: %s \n", cur_patient.Name, cur_patient.Stage)
 
-// 	if doctor.nextWorker != nil {
-// 		doctor.nextWorker.execute(cur_patient)
-// 	} else {
-// 		fmt.Println("")
-// 	}
-// }
+	if doctor.nextWorker != nil {
+		doctor.nextWorker.execute(cur_patient)
+	} else {
+		fmt.Println("")
+	}
+}
 
 // func (doctor *DoctorA) setNext(next_worker worker) {
 // 	doctor.nextWorker = next_worker
@@ -55,40 +55,36 @@ type DoctorB struct {
 	baseDoctor
 }
 
-// func (doctor *DoctorA) DoctorB(cur_patient *patient) {
-// 	cur_patient.Stage = doctor.name
+func (doctor *DoctorB) execute(cur_patient *patient) {
+	cur_patient.Stage = doctor.name
 
-// 	fmt.Printf("Patient.Name: %s, Patient.Stage: %s \n", cur_patient.Name, cur_patient.Stage)
+	fmt.Printf("DoctorB Patient.Name: %s, Patient.Stage: %s \n", cur_patient.Name, cur_patient.Stage)
 
-// 	if doctor.nextWorker != nil {
-// 		doctor.nextWorker.execute(cur_patient)
-// 	} else {
-// 		fmt.Println("")
-// 	}
-// }
-
-// func (doctor *DoctorB) setNext(next_worker worker) {
-// 	doctor.nextWorker = next_worker
-// }
-
-func main() {
-	patient_ := patient{
-		Name: "Tom",
+	if doctor.nextWorker != nil {
+		doctor.nextWorker.execute(cur_patient)
+	} else {
+		fmt.Println("")
 	}
-
-	doctor_a := DoctorA{
-		baseDoctor: baseDoctor{
-			name: "DoctorA",
-		},
-	}
-
-	doctor_b := DoctorB{
-		baseDoctor: baseDoctor{
-			name: "DoctorB",
-		},
-	}
-
-	doctor_a.setNext(&doctor_b)
-
-	doctor_a.execute(&patient_)
 }
+
+// func main() {
+// 	patient_ := patient{
+// 		Name: "Tom",
+// 	}
+
+// 	doctor_a := DoctorA{
+// 		baseDoctor: baseDoctor{
+// 			name: "DoctorA",
+// 		},
+// 	}
+
+// 	doctor_b := DoctorB{
+// 		baseDoctor: baseDoctor{
+// 			name: "DoctorB",
+// 		},
+// 	}
+
+// 	doctor_a.setNext(&doctor_b)
+
+// 	doctor_a.execute(&patient_)
+// }

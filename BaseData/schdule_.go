@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import (
 	"fmt"
@@ -36,8 +36,8 @@ func test_trap2() {
 	fmt.Println("x =", x)
 }
 
-func main() {
-	// test_trap()
+// func main() {
+// 	// test_trap()
 
-	test_trap2()
-}
+// 	test_trap2()
+// }

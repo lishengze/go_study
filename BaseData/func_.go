@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import "fmt"
 
@@ -37,10 +37,10 @@ func test_bibao() {
 	}
 }
 
-func main() {
-	// a := 10
-	// b := 20
-	// fmt.Printf("test(a, b, add)(a, b): %d \n", test(a, b, add)(a, b))
+// func main() {
+// 	// a := 10
+// 	// b := 20
+// 	// fmt.Printf("test(a, b, add)(a, b): %d \n", test(a, b, add)(a, b))
 
-	test_bibao()
-}
+// 	test_bibao()
+// }

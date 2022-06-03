@@ -1,4 +1,4 @@
-package main
+package BaseData
 
 import (
 	"context"
@@ -93,10 +93,10 @@ func test_mycontext() {
 
 }
 
-func main() {
-	fmt.Println("------ Test Context ------")
+// func main() {
+// 	fmt.Println("------ Test Context ------")
 
-	// test_simple()
+// 	// test_simple()
 
-	test_mycontext()
-}
+// 	test_mycontext()
+// }
