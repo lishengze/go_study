@@ -8,5 +8,6 @@ import (
 func main() {
 	fmt.Println("------- Test Main ------")
 
-	BaseData.TestSliceMain()
+	// BaseData.TestSliceMain()
+	BaseData.TestTables()
 }
