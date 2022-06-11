@@ -11,4 +11,5 @@ func main() {
 	// BaseData.TestSliceMain()
 
 	BaseData.TestTreeMap()
+	BaseData.TestTables()
 }
