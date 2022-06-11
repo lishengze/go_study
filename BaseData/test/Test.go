@@ -9,5 +9,9 @@ func main() {
 	fmt.Println("------- Test Main ------")
 
 	// BaseData.TestSliceMain()
-	BaseData.TestTables()
+	// BaseData.TestTables()
+
+	// BaseData.TestContextMain()
+
+	BaseData.TestMapMain()
 }

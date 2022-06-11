@@ -58,7 +58,7 @@ func work(ctx context.Context) {
 			fmt.Printf("%v, Main Send Done \n", time.Now())
 			return
 		default:
-			time.Sleep(time.Second * 3)
+			fmt.Printf("Default Work")
 		}
 	}
 }
@@ -78,6 +78,8 @@ func test_mycontext() {
 
 	go work(user_child_ctx)
 
+	time.Sleep(time.Second * 10)
+
 	base_child_cancel_func()
 
 	user_child_cancel_func()
@@ -91,6 +93,10 @@ func test_mycontext() {
 
 	// user_child_ctx
 
+}
+
+func TestContextMain() {
+	test_mycontext()
 }
 
 // func main() {
