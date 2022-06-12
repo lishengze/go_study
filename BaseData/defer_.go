@@ -48,15 +48,19 @@ func test4() int {
 }
 
 func test5() int {
-	r := g
+	r := 100
 	defer func() {
-		r = 200
+		// r = 200
 		fmt.Printf("test5 defer r: %d\n", r)
 	}()
 
 	r = 0
 	return r
 
+}
+
+func TestDeferMain() {
+	test5()
 }
 
 // func main() {

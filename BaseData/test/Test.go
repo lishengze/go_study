@@ -15,6 +15,8 @@ func main() {
 
 	// BaseData.TestMapMain()
 
-	BaseData.TestTreeMap()
+	// BaseData.TestTreeMap()
 	// BaseData.TestTables()
+
+	BaseData.TestDeferMain()
 }
